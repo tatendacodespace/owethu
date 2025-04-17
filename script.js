@@ -17,50 +17,43 @@ function createHearts() {
 document.addEventListener('DOMContentLoaded', () => {
     createHearts();
 
-    const nextBtn = document.querySelector('.next-btn');
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            // Create heart animation
-            createHeartAnimation(nextBtn);
-            
-            // Check if we're on page7
-            const currentPage = window.location.pathname.split('/').pop();
-            if (currentPage === 'page7.html') {
-                // Navigate to WhatsApp after animation
-                setTimeout(() => {
-                    window.location.href = 'https://wa.me/+27681930814';
-                }, 1000);
-            } else {
-                // Navigate to next page after animation
-                setTimeout(() => {
-                    window.location.href = 'page6.html';
-                }, 1000);
-            }
-        });
+    // Function to handle navigation
+    function handleNavigation(nextPage) {
+        // Create heart animation
+        const button = event.currentTarget;
+        createHeartAnimation(button);
+        
+        // Navigate after animation
+        setTimeout(() => {
+            window.location.href = nextPage;
+        }, 1000);
     }
 
+    // Proceed button
     const proceedBtn = document.querySelector('.proceed-btn');
     if (proceedBtn) {
-        proceedBtn.addEventListener('click', () => {
+        proceedBtn.addEventListener('click', (event) => {
             const currentPage = window.location.pathname.split('/').pop();
             if (currentPage === 'index.html') {
-                window.location.href = 'page2.html';
+                handleNavigation('page2.html');
             } else if (currentPage === 'page2.html') {
-                window.location.href = 'page3.html';
+                handleNavigation('page3.html');
             }
         });
     }
 
+    // Return button
     const returnBtn = document.querySelector('.return-btn');
     if (returnBtn) {
-        returnBtn.addEventListener('click', () => {
-            window.location.href = 'page3.html';
+        returnBtn.addEventListener('click', (event) => {
+            handleNavigation('page3.html');
         });
     }
 
+    // Option buttons
     const optionBtns = document.querySelectorAll('.option-btn');
     optionBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (event) => {
             // Remove selected class from all buttons
             optionBtns.forEach(b => b.classList.remove('selected'));
             // Add selected class to clicked button
@@ -82,9 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Next button
+    const nextBtn = document.querySelector('.next-btn');
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (event) => {
+            const currentPage = window.location.pathname.split('/').pop();
+            if (currentPage === 'page5.html') {
+                handleNavigation('page6.html');
+            } else if (currentPage === 'page7.html') {
+                window.location.href = 'https://wa.me/+27681930814';
+            }
+        });
+    }
+
+    // Submit button
     const submitBtn = document.querySelector('.submit-btn');
     if (submitBtn) {
-        submitBtn.addEventListener('click', () => {
+        submitBtn.addEventListener('click', (event) => {
             const questionInput = document.querySelector('.question-input');
             const question = questionInput.value.trim();
             
@@ -92,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Create heart animation
                 createHeartAnimation(submitBtn);
                 
-                // Store the question (you can modify this to send to a server)
+                // Store the question
                 localStorage.setItem('lastQuestion', question);
                 
                 // Navigate to next page after animation

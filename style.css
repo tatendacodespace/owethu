@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
     color: #333;
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
 }
 
 body.page2,
@@ -77,6 +79,12 @@ body.page7 {
     margin-top: 2rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    width: 100%;
+    max-width: 300px;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+    user-select: none;
 }
 
 .proceed-btn:hover,
@@ -87,6 +95,37 @@ body.page7 {
     background: #ff1493;
     transform: scale(1.02);
     box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+}
+
+.proceed-btn:active,
+.return-btn:active,
+.option-btn:active,
+.next-btn:active,
+.submit-btn:active {
+    transform: scale(0.98);
+    background: #ff1493;
+}
+
+/* Mobile specific styles */
+@media (max-width: 480px) {
+    .proceed-btn,
+    .return-btn,
+    .option-btn,
+    .next-btn,
+    .submit-btn {
+        padding: 1.2rem 2.2rem;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .opening-line {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
 }
 
 /* Input styles */
