@@ -61,7 +61,6 @@ body.page7 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Button styles */
 .proceed-btn,
 .return-btn,
 .option-btn,
@@ -106,7 +105,6 @@ body.page7 {
     background: #ff1493;
 }
 
-/* Mobile specific styles */
 @media (max-width: 480px) {
     .proceed-btn,
     .return-btn,
@@ -128,7 +126,6 @@ body.page7 {
     }
 }
 
-/* Input styles */
 .input-container {
     display: flex;
     flex-direction: column;
@@ -157,7 +154,6 @@ body.page7 {
     color: #999;
 }
 
-/* Animation for empty input */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -168,12 +164,10 @@ body.page7 {
     animation: shake 0.5s ease;
 }
 
-/* Remove all floating elements and their animations */
 .stars-container {
     display: none;
 }
 
-/* Remove all floating animations */
 @keyframes float {
     0%, 100% { transform: none; }
     50% { transform: none; }
