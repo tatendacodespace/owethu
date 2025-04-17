@@ -97,21 +97,51 @@ document.addEventListener('DOMContentLoaded', () => {
     // Submit button
     const submitBtn = document.querySelector('.submit-btn');
     if (submitBtn) {
-        submitBtn.addEventListener('click', (event) => {
+        submitBtn.addEventListener('click', async (event) => {
             const questionInput = document.querySelector('.question-input');
             const question = questionInput.value.trim();
             
             if (question) {
-                // Create heart animation
-                createHeartAnimation(submitBtn);
-                
-                // Store the question
-                localStorage.setItem('lastQuestion', question);
-                
-                // Navigate to next page after animation
-                setTimeout(() => {
-                    window.location.href = 'page7.html';
-                }, 1000);
+                try {
+                    // Create heart animation
+                    createHeartAnimation(submitBtn);
+                    
+                    // Send the question to the server
+                    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            service_id: 'service_3ucsukm',
+                            template_id: 'template_d28ic3u',
+                            user_id: '--mHdD4datxmYOyPW',
+                            template_params: {
+                                message: question,
+                                to_email: 'tatendamidzi49@gmail.com',
+                                from_name: 'Anonymous'
+                            }
+                        })
+                    });
+
+                    if (response.ok) {
+                        // Store the question locally
+                        localStorage.setItem('lastQuestion', question);
+                        
+                        // Navigate to next page after animation
+                        setTimeout(() => {
+                            window.location.href = 'page7.html';
+                        }, 1000);
+                    } else {
+                        throw new Error('Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    // Still navigate to next page even if sending fails
+                    setTimeout(() => {
+                        window.location.href = 'page7.html';
+                    }, 1000);
+                }
             } else {
                 // Add shake animation to input if empty
                 questionInput.classList.add('shake');
