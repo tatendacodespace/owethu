@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffc0cb;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+body.page2,
+body.page3,
+body.page4,
+body.page5,
+body.page6,
+body.page7 {
+    background: #ffc0cb;
+}
+
+.content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    z-index: 1;
+}
+
+.main-text {
+    margin-bottom: 2rem;
+}
+
+.opening-line {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+.opening-line:nth-child(1) { animation-delay: 0.5s; }
+.opening-line:nth-child(2) { animation-delay: 1s; }
+.opening-line:nth-child(3) { animation-delay: 1.5s; }
+.opening-line:nth-child(4) { animation-delay: 2s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Button styles */
+.proceed-btn,
+.return-btn,
+.option-btn,
+.next-btn,
+.submit-btn {
+    background: #ff69b4;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    color: white;
+    font-family: 'Quicksand', 'Arial', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.proceed-btn:hover,
+.return-btn:hover,
+.option-btn:hover,
+.next-btn:hover,
+.submit-btn:hover {
+    background: #ff1493;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+}
+
+/* Input styles */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.question-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-family: 'Quicksand', 'Arial', sans-serif;
+    font-size: 1.1rem;
+    resize: vertical;
+    letter-spacing: 0.5px;
+}
+
+.question-input::placeholder {
+    color: #999;
+}
+
+/* Animation for empty input */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}
+
+/* Remove all floating elements and their animations */
+.stars-container {
+    display: none;
+}
+
+/* Remove all floating animations */
+@keyframes float {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes hoodieFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes musicFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes cloudFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes heartFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes questionFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes thinkingFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
+
+@keyframes windowFloat {
+    0%, 100% { transform: none; }
+    50% { transform: none; }
+}
