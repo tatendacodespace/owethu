@@ -29,12 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Function to get current page
+    function getCurrentPage() {
+        const path = window.location.pathname;
+        return path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+    }
+
     // Proceed button
     const proceedBtn = document.querySelector('.proceed-btn');
     if (proceedBtn) {
         proceedBtn.addEventListener('click', (event) => {
-            const currentPage = window.location.pathname.split('/').pop();
-            if (currentPage === 'index.html') {
+            const currentPage = getCurrentPage();
+            if (currentPage === 'index.html' || currentPage === '') {
                 handleNavigation('page2.html');
             } else if (currentPage === 'page2.html') {
                 handleNavigation('page3.html');
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.next-btn');
     if (nextBtn) {
         nextBtn.addEventListener('click', (event) => {
-            const currentPage = window.location.pathname.split('/').pop();
+            const currentPage = getCurrentPage();
             if (currentPage === 'page5.html') {
                 handleNavigation('page6.html');
             } else if (currentPage === 'page7.html') {
